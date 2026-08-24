@@ -1,0 +1,36 @@
+{
+  "madarsa_name": "Madarsa Islamia Darul Huda",
+  "logo_text": "DH",
+  "hero_title": "A trusted digital home for your madarsa community",
+  "hero_description": "Share your mission, manage admissions, organize classes, and let teachers record daily attendance from one place.",
+  "about_text": "Madarsa Islamia Darul Huda is dedicated to nurturing Quranic learning, strong character, and a disciplined love for sacred knowledge in a well-organized environment.",
+  "admission_text": "Families can submit admission details online. The head of the madarsa can review students, assign courses, and manage progress through the admin section.",
+  "contact_email": "brahmanishahbaz110@gmail.com",
+  "contact_phone": "03243918792",
+  "contact_address": "Main Road, Community Campus, Pakistan",
+  "footer_text": "Madarsa Islamia Darul Huda. Serving students with sincerity and structure.",
+  "special_notice": "مدرسة إسلامية دار الهدى",
+  "donation_situation": "Help us provide food, uniforms and tuition for needy students this month.",
+  "donation_easypaisa": "+92 300 1234567",
+  "donation_jazzcash": "+92 321 7654321",
+  "donation_items": [
+    {
+      "title": "Student Relief Fund",
+      "message": "Provide immediate assistance for education, uniforms and meals for the most needy families.",
+      "easypaisa": "+92 300 1234567",
+      "jazzcash": "+92 321 7654321"
+    }
+  ],
+  "closed_days": [
+    "Thursday",
+    "Friday"
+  ],
+  "open_days": [
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday"
+  ],
+  "updated_at": "2026-08-21T09:31:18.295Z"
+}

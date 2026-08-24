@@ -1,0 +1,22 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="20" y1="10" x2="200" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F3D33"/>
+      <stop offset="1" stop-color="#1D6B52"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="50" y1="50" x2="170" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9D778"/>
+      <stop offset="1" stop-color="#D89E17"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="10" y="10" width="200" height="200" rx="42" fill="url(#bg)"/>
+  <circle cx="110" cy="110" r="72" stroke="url(#gold)" stroke-width="4" opacity="0.9"/>
+  <path d="M72 122C72 93.2812 95.2812 70 124 70C143.33 70 160.325 80.6082 169.177 97.2461" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M97 104H123C130.732 104 137 110.268 137 118V131C137 138.732 130.732 145 123 145H97C89.268 145 83 138.732 83 131V118C83 110.268 89.268 104 97 104Z" fill="url(#gold)" opacity="0.2"/>
+  <path d="M88 118C88 100.327 101.327 87 119 87C122.822 87 126.41 87.652 129.729 88.839" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M95 131H136" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M110 82V152" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M110 85L123 106H97L110 85Z" fill="url(#gold)" opacity="0.9"/>
+  <text x="110" y="176" text-anchor="middle" fill="#F6F0D4" font-size="28" font-weight="700" font-family="Noto Naskh Arabic, Amiri, serif">مدرسة</text>
+</svg>
