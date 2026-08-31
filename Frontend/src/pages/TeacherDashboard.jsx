@@ -238,7 +238,7 @@ export default function TeacherDashboard({ user, onLogout }) {
 
   return (
     <div className="container section-padding" style={{ maxWidth: '1200px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--gray-200)' }}>
+      <div className="dashboard-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--gray-200)' }}>
         <div>
           <p style={{ margin: 0, color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.8rem' }}>Teacher Portal</p>
           <h2 style={{ margin: '0.35rem 0 0.5rem' }}>Assalamu Alaikum, {teacher.display_name || teacher.full_name || 'Teacher'}</h2>

@@ -14,7 +14,7 @@ const modeTitle = {
 };
 
 const modeHint = {
-  [MODES.HEAD_LOGIN]: 'Use your configured head email and password to sign in.',
+  [MODES.HEAD_LOGIN]: 'Use admin / Admin123 for default head access, or your registered head email.',
   [MODES.TEACHER_LOGIN]: 'Teachers can update student records and mark attendance.',
   [MODES.FORGOT]: 'Enter your account email to receive a password reset message.',
 };
@@ -106,7 +106,7 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
     setSuccess('');
     try {
       await api.post('/auth/password/forgot', forgotPassword);
-      setSuccess('If an account exists for that email, a password reset message will be sent.');
+      setSuccess('If an account exists for that email, a password reset message has been sent.');
     } catch (err) {
       setError(err.message || 'Unable to generate a password reset token.');
     } finally {
@@ -138,7 +138,7 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
 
   return (
     <div style={{ minHeight: '80vh', padding: '2rem 1rem', display: 'grid', placeItems: 'center', background: 'linear-gradient(180deg, rgba(19, 54, 78, 0.05), rgba(255,255,255,1))' }}>
-      <div className="card" style={{ width: 'min(940px, 100%)', padding: '2rem', boxShadow: 'var(--shadow-lg)' }}>
+      <div className="card login-card" style={{ width: 'min(940px, 100%)', padding: '2rem', boxShadow: 'var(--shadow-lg)' }}>
         <div style={{ marginBottom: '1.25rem' }}>
           <p style={{ margin: 0, color: 'var(--color-primary)', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Portal Access</p>
           <h2 style={{ margin: '0.35rem 0 0.5rem', fontSize: '2rem', color: 'var(--color-primary)' }}>{modeTitle[mode]}</h2>

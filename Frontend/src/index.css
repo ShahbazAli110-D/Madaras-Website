@@ -411,3 +411,230 @@ tr:hover td {
 .badge-warning { background: #fef9c3; color: #a16207; }
 .badge-danger { background: #fee2e2; color: #b91c1c; }
 .badge-info { background: #e0f2fe; color: #0369a1; }
+
+/* Responsive layout adjustments */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .site-header-inner {
+    height: auto !important;
+    min-height: 72px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    gap: 1rem;
+  }
+
+  .site-nav {
+    gap: 1rem !important;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .section-padding {
+    padding: 4.5rem 0;
+  }
+
+  .landing-two-column,
+  .admission-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  .schedule-panel {
+    padding: 2rem !important;
+  }
+
+  .admin-layout {
+    grid-template-columns: 200px minmax(0, 1fr) !important;
+  }
+
+  .admin-content {
+    padding: 2rem !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  section[id] {
+    background-attachment: scroll;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .site-header-inner {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+
+  .site-header-inner > div:first-child {
+    width: 100%;
+  }
+
+  .site-header-inner > div:first-child img {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .site-header-inner > div:first-child span {
+    font-size: 1.15rem !important;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: flex-start !important;
+    gap: 0.7rem !important;
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    padding-bottom: 0.2rem;
+    scrollbar-width: thin;
+  }
+
+  .site-nav a,
+  .site-nav button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .hero-inner {
+    min-height: 560px !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .hero-inner h1 {
+    font-size: clamp(1.8rem, 8vw, 2.6rem) !important;
+  }
+
+  .arabic-marquee-track {
+    font-size: 2rem;
+  }
+
+  .arabic-subtitle {
+    font-size: 1.05rem !important;
+  }
+
+  .hero-inner .btn {
+    width: 100%;
+  }
+
+  .section-padding {
+    padding: 3.25rem 0;
+  }
+
+  .section-padding h2,
+  .landing-two-column h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .card,
+  .login-card {
+    padding: 1.25rem !important;
+    border-radius: 12px;
+  }
+
+  .landing-two-column > .card {
+    width: 100%;
+  }
+
+  .landing-two-column > div > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .schedule-panel {
+    padding: 1.25rem !important;
+    border-radius: 14px !important;
+  }
+
+  .search-form,
+  .admission-layout form > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .search-form .form-group {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .admin-layout {
+    display: block !important;
+    min-height: auto !important;
+  }
+
+  .admin-sidebar {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--gray-200);
+    padding: 1rem !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem !important;
+  }
+
+  .admin-sidebar h4 {
+    grid-column: 1 / -1;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .admin-sidebar .btn:last-child {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem !important;
+  }
+
+  .admin-content {
+    padding: 1rem !important;
+    overflow: hidden;
+  }
+
+  .dashboard-heading {
+    flex-direction: column;
+  }
+
+  .dashboard-heading .btn {
+    width: 100%;
+  }
+
+  table {
+    min-width: 720px;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .table-container {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  footer .container > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  footer .container > div:last-child {
+    align-items: flex-start !important;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

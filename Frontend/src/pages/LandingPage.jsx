@@ -257,7 +257,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
           background: 'linear-gradient(90deg, rgba(5, 28, 22, 0.88) 0%, rgba(8, 41, 31, 0.66) 40%, rgba(8, 41, 31, 0.36) 100%)',
         }} />
 
-        <div className="container" style={{
+        <div className="container hero-inner" style={{
           position: 'relative',
           zIndex: 1,
           display: 'flex',
@@ -340,7 +340,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="landing-two-column" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
             <div>
               <p style={{ fontSize: '1.1rem', color: 'var(--color-dark-muted)', marginBottom: '1.5rem', lineHeight: 1.8 }}>
                 {aboutText}
@@ -369,7 +369,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       {/* Schedule / Vacation Section */}
       <section id="schedule" style={{ backgroundColor: 'var(--color-primary-light)', padding: '5rem 0' }}>
         <div className="container">
-          <div style={{
+          <div className="schedule-panel" style={{
             backgroundColor: 'var(--white)',
             borderRadius: 'var(--border-radius-lg)',
             padding: '3rem',
@@ -448,7 +448,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
+          <div className="landing-two-column" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
             <div style={{ padding: '2rem', borderRadius: '20px', background: 'var(--color-primary-light)', color: 'var(--color-dark)', boxShadow: 'var(--shadow-sm)' }}>
               <h3 style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>Donation Situation</h3>
               <p style={{ color: 'var(--color-dark-muted)', lineHeight: 1.8 }}>
@@ -566,7 +566,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
 
       {/* Admission Section */}
       <section id="admission" className="section-padding" style={{ backgroundColor: 'var(--white)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '5rem', alignItems: 'flex-start' }}>
+        <div className="container landing-two-column admission-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '5rem', alignItems: 'flex-start' }}>
           <div>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>Admissions</span>
             <h2 style={{ fontSize: '2.25rem', marginTop: '0.5rem', marginBottom: '1.5rem' }}>Submit Student Registration</h2>
@@ -700,7 +700,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
           </div>
 
           <div className="card" style={{ maxWidth: '850px', margin: '0 auto 3rem auto' }}>
-            <form onSubmit={handleSearchSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto', gap: '1rem', alignItems: 'flex-end' }}>
+            <form className="search-form" onSubmit={handleSearchSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto', gap: '1rem', alignItems: 'flex-end' }}>
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label>Roll Number</label>
                 <input

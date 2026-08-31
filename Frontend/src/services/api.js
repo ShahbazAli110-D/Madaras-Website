@@ -1,4 +1,6 @@
-const API_URL = ''; // Uses Vite proxy config (relative requests)
+const API_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost' 
+  ? '' // Uses Vite proxy config for local development (relative requests)
+  : ''; // Uses absolute path for production (relative requests to same domain)
 
 const getHeaders = (endpoint = '') => {
   const token = localStorage.getItem('token');
@@ -30,6 +32,7 @@ export const api = {
     const res = await fetch(`${API_URL}/api${endpoint}`, {
       method: 'GET',
       headers: getHeaders(endpoint),
+      credentials: 'include',
     });
     return handleResponse(res);
   },
@@ -39,6 +42,7 @@ export const api = {
       method: 'POST',
       headers: getHeaders(endpoint),
       body: JSON.stringify(data),
+      credentials: 'include',
     });
     return handleResponse(res);
   },
@@ -48,6 +52,7 @@ export const api = {
       method: 'PUT',
       headers: getHeaders(endpoint),
       body: JSON.stringify(data),
+      credentials: 'include',
     });
     return handleResponse(res);
   },
@@ -56,6 +61,7 @@ export const api = {
     const res = await fetch(`${API_URL}/api${endpoint}`, {
       method: 'DELETE',
       headers: getHeaders(endpoint),
+      credentials: 'include',
     });
     return handleResponse(res);
   },

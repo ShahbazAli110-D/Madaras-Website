@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "buildCommand": "npm install --prefix Backend && npm install --prefix Frontend && npm run build --prefix Frontend",
+  "outputDirectory": "Frontend/dist",
+  "env": {
+    "USE_IN_MEMORY_DB": "true",
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "api/index.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api"
+    },
+    {
+      "source": "/((?!api|assets|_next|favicon).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

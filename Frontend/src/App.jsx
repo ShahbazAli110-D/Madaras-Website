@@ -129,7 +129,7 @@ export default function App() {
         borderBottom: '1px solid rgba(15, 76, 58, 0.08)',
         boxShadow: '0 14px 30px rgba(15, 76, 58, 0.08), inset 0 1px 0 rgba(255,255,255,0.35)'
       }}>
-        <div className="container" style={{
+        <div className="container site-header-inner" style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -166,7 +166,7 @@ export default function App() {
 
           {/* Navigation Links */}
           {page === 'landing' ? (
-            <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+            <nav className="site-nav" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
               <a href="#about" style={{ fontWeight: 500, fontSize: '0.95rem', color: 'var(--color-dark-muted)' }}>About</a>
               <a href="#login" style={{ fontWeight: 500, fontSize: '0.95rem', color: 'var(--color-dark-muted)' }} onClick={() => setPage('login')}>Login</a>
               <a href="#schedule" style={{ fontWeight: 500, fontSize: '0.95rem', color: 'var(--color-dark-muted)' }}>Schedule</a>
@@ -177,7 +177,7 @@ export default function App() {
               <a href="#contact" style={{ fontWeight: 500, fontSize: '0.95rem', color: 'var(--color-dark-muted)' }}>Contact</a>
             </nav>
           ) : (
-            <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <nav className="site-nav" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               {user ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>

@@ -1,6 +1,7 @@
 const madarsaStore = require('../data/madarsaStore');
 const { createAuthToken, verifyPassword } = require('../utils/auth');
 const sendError = require('../utils/sendError');
+const { isEmailConfigured, sendPasswordResetEmail } = require('../utils/email');
 const {
   validateAdminLoginPayload,
   validateForgotPasswordPayload,
@@ -10,6 +11,18 @@ const {
 } = require('../utils/validators');
 
 const HEAD_SIGNUP_CODE = process.env.HEAD_SIGNUP_CODE || 'DarulHudaHead2026';
+
+const getFrontendOrigin = () => {
+  if (process.env.FRONTEND_ORIGIN) {
+    return String(process.env.FRONTEND_ORIGIN).replace(/\/+$/, '');
+  }
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  return 'http://localhost:5173';
+};
 
 const getAdminEnvCredentials = () => ({
   username: String(process.env.ADMIN_USERNAME || 'admin').trim().toLowerCase(),
@@ -231,10 +244,21 @@ const forgotPassword = async (req, res) => {
     }
 
     const resetInfo = await madarsaStore.requestPasswordReset(value.email);
+    const resetLink = `${getFrontendOrigin()}${resetInfo.reset_link}`;
+
+    if (isEmailConfigured()) {
+      await sendPasswordResetEmail({
+        recipient: resetInfo.email,
+        resetLink,
+      });
+    } else {
+      const configurationError = new Error('Email service is not configured. Please set SMTP_HOST, SMTP_USER, and SMTP_PASSWORD in your deployment environment.');
+      configurationError.status = 503;
+      throw configurationError;
+    }
 
     return res.status(200).json({
-      message: 'Password reset link generated successfully.',
-      ...resetInfo,
+      message: 'If an account exists for that email, a password reset message has been sent.',
     });
   } catch (error) {
     return sendError(res, error);

@@ -1,7 +1,9 @@
-require('dotenv').config();
-
 const fs = require('fs');
 const path = require('path');
+
+require('dotenv').config({ path: path.join(__dirname, '.env') });
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+require('dotenv').config({ path: path.join(__dirname, '..', '.env.production') });
 const express = require('express');
 const cors = require('cors');
 const { verifyConnection, useInMemoryDb } = require('./data/madarsaStore');
@@ -13,19 +15,46 @@ const teacherRoutes = require('./routes/teacherRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const frontendDistPath = path.join(__dirname, '..', 'Madarsa Website', 'dist');
+const frontendDistPath = path.join(__dirname, '..', 'Frontend', 'dist');
+const isVercelDeployment = process.env.VERCEL === '1';
 
 const allowedOrigins = new Set(
   [
     process.env.FRONTEND_ORIGIN,
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
+    process.env.VERCEL_URL ? `http://${process.env.VERCEL_URL}` : null,
     'http://localhost:5173',
     'http://127.0.0.1:5173',
     'http://localhost:5174',
     'http://127.0.0.1:5174',
+    'http://localhost:3000',
     `http://localhost:${PORT}`,
     `http://127.0.0.1:${PORT}`,
   ].filter(Boolean)
 );
+
+const isAllowedOrigin = (origin) => {
+  if (!origin) {
+    return true;
+  }
+
+  if (allowedOrigins.has(origin)) {
+    return true;
+  }
+
+  if (isVercelDeployment) {
+    try {
+      const { hostname } = new URL(origin);
+      if (hostname.endsWith('.vercel.app')) {
+        return true;
+      }
+    } catch (error) {
+      return false;
+    }
+  }
+
+  return false;
+};
 
 app.disable('x-powered-by');
 
@@ -37,10 +66,12 @@ app.use((req, res, next) => {
   next();
 });
 
+app.set('trust proxy', 1);
+
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.has(origin)) {
+      if (isAllowedOrigin(origin)) {
         return callback(null, true);
       }
 
@@ -48,6 +79,7 @@ app.use(
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
 
@@ -106,4 +138,8 @@ const startServer = async () => {
   }
 };
 
-startServer();
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = app;

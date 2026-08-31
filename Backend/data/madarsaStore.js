@@ -11,7 +11,8 @@ const {
   WEEK_DAYS,
 } = require('../utils/validators');
 
-const useInMemoryDb = String(process.env.USE_IN_MEMORY_DB).toLowerCase() === 'true';
+const useInMemoryDb = String(process.env.USE_IN_MEMORY_DB).toLowerCase() === 'true'
+  || process.env.VERCEL === '1';
 const fs = require('fs');
 const path = require('path');
 const SITE_CONTENT_FILE = path.join(__dirname, 'site_content.json');

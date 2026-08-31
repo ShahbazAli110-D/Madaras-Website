@@ -9,13 +9,17 @@ const escapeHtml = (value) => String(value)
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#039;');
 
+const isEmailConfigured = () => Boolean(
+  process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD
+);
+
 const getTransporter = () => {
   if (transporter) {
     return transporter;
   }
 
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
-    const configurationError = new Error('Email service is not configured.');
+  if (!isEmailConfigured()) {
+    const configurationError = new Error('Email service is not configured. Please set SMTP_HOST, SMTP_USER, and SMTP_PASSWORD in your deployment environment.');
     configurationError.status = 503;
     throw configurationError;
   }
@@ -33,13 +37,15 @@ const getTransporter = () => {
   return transporter;
 };
 
+const sendMail = async (mailOptions) => getTransporter().sendMail(mailOptions);
+
 const sendContactEmail = async ({ recipient, name, email, message }) => {
   const from = process.env.SMTP_FROM || process.env.SMTP_USER;
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
-  return getTransporter().sendMail({
+  return sendMail({
     from,
     to: recipient,
     replyTo: email,
@@ -49,4 +55,21 @@ const sendContactEmail = async ({ recipient, name, email, message }) => {
   });
 };
 
-module.exports = { sendContactEmail };
+const sendPasswordResetEmail = async ({ recipient, resetLink }) => {
+  const from = process.env.SMTP_FROM || process.env.SMTP_USER;
+  const safeLink = escapeHtml(resetLink);
+
+  return sendMail({
+    from,
+    to: recipient,
+    subject: 'Password reset request',
+    text: `Use this link to reset your password: ${resetLink}`,
+    html: `<p>You requested a password reset.</p><p><a href="${safeLink}">Reset your password</a></p><p>If you did not request this, you can ignore this email.</p>`,
+  });
+};
+
+module.exports = {
+  isEmailConfigured,
+  sendContactEmail,
+  sendPasswordResetEmail,
+};

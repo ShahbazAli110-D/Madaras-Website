@@ -398,7 +398,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', minHeight: '85vh', backgroundColor: 'var(--white)' }}>
+    <div className="admin-layout" style={{ display: 'grid', gridTemplateColumns: '240px 1fr', minHeight: '85vh', backgroundColor: 'var(--white)' }}>
       {actionSuccess && (
         <div
           role="status"
@@ -450,7 +450,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
       )}
 
       {/* Sidebar Panel */}
-      <div style={{
+      <div className="admin-sidebar" style={{
         background: 'var(--gray-50)',
         borderRight: '1px solid var(--gray-200)',
         padding: '2rem 1.5rem',
@@ -505,7 +505,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
       </div>
 
       {/* Content Space */}
-      <div style={{ padding: '3rem' }}>
+      <div className="admin-content" style={{ padding: '3rem' }}>
         {/* Tab 1: Dashboard metrics */}
         {activeTab === 'dashboard' && (
           <div>
