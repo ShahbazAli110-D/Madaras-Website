@@ -137,8 +137,8 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
   
 
   return (
-    <div style={{ minHeight: '80vh', padding: '2rem 1rem', display: 'grid', placeItems: 'center', background: 'linear-gradient(180deg, rgba(19, 54, 78, 0.05), rgba(255,255,255,1))' }}>
-      <div className="card login-card" style={{ width: 'min(940px, 100%)', padding: '2rem', boxShadow: 'var(--shadow-lg)' }}>
+    <div className="login-shell" style={{ minHeight: '80vh', padding: '2rem 1rem', display: 'grid', placeItems: 'center', background: 'linear-gradient(180deg, rgba(19, 54, 78, 0.05), rgba(255,255,255,1))' }}>
+      <div className="card login-card login-panel" style={{ width: 'min(940px, 100%)', padding: '2rem', boxShadow: 'var(--shadow-lg)' }}>
         <div style={{ marginBottom: '1.25rem' }}>
           <p style={{ margin: 0, color: 'var(--color-primary)', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Portal Access</p>
           <h2 style={{ margin: '0.35rem 0 0.5rem', fontSize: '2rem', color: 'var(--color-primary)' }}>{modeTitle[mode]}</h2>
@@ -148,12 +148,12 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
         {error && <div style={{ background: '#fee2e2', color: '#b91c1c', border: '1px solid #fecaca', borderRadius: '12px', padding: '0.9rem 1rem', marginBottom: '1rem' }}>{error}</div>}
         {success && <div style={{ background: '#dcfce7', color: '#166534', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '0.9rem 1rem', marginBottom: '1rem' }}>{success}</div>}
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.5rem' }}>
+        <div className="login-mode-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.5rem' }}>
           <button type="button" className="btn" onClick={() => switchMode(MODES.HEAD_LOGIN)} style={{ padding: '0.7rem 1rem', borderRadius: '999px', background: mode === MODES.HEAD_LOGIN ? 'var(--color-primary)' : 'var(--gray-100)', color: mode === MODES.HEAD_LOGIN ? 'var(--white)' : 'var(--color-dark)' }}>Head Login</button>
           <button type="button" className="btn" onClick={() => switchMode(MODES.TEACHER_LOGIN)} style={{ padding: '0.7rem 1rem', borderRadius: '999px', background: mode === MODES.TEACHER_LOGIN ? 'var(--color-primary)' : 'var(--gray-100)', color: mode === MODES.TEACHER_LOGIN ? 'var(--white)' : 'var(--color-dark)' }}>Teacher Login</button>
           <button type="button" className="btn" onClick={() => switchMode(MODES.FORGOT)} style={{ padding: '0.7rem 1rem', borderRadius: '999px', background: mode === MODES.FORGOT ? 'var(--color-primary)' : 'var(--gray-100)', color: mode === MODES.FORGOT ? 'var(--white)' : 'var(--color-dark)' }}>Forgot Password</button>
         </div>
-        <div style={{ marginBottom: '1rem', display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+        <div className="login-inline-help" style={{ marginBottom: '1rem', display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
           <div style={{ fontSize: '0.9rem', color: 'var(--color-dark-muted)' }}>Use your admin username or head email to sign in.</div>
         </div>
         {mode === MODES.HEAD_LOGIN && (
@@ -161,7 +161,7 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
             <form onSubmit={handleHeadLogin} autoComplete="off">
               <div className="form-group"><label>Head Email or Admin Username</label><input className="form-control" type="text" name="head-email" autoComplete="off" placeholder="e.g. head@darulhuda.local or admin" value={headLogin.identifier} onChange={(e) => setHeadLogin((c) => ({ ...c, identifier: e.target.value }))} required /></div>
               <div className="form-group"><label>Password</label><input className="form-control" type="password" name="head-password" autoComplete="new-password" placeholder="Enter your password" value={headLogin.password} onChange={(e) => setHeadLogin((c) => ({ ...c, password: e.target.value }))} required /></div>
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+              <div className="login-actions" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
                 <button type="button" className="btn btn-outline" onClick={() => setShowHeadSetup(true)}>Set up new head account</button>
                 <button type="button" className="btn btn-outline" onClick={() => switchMode(MODES.FORGOT)}>Forgot password?</button>
               </div>
@@ -174,7 +174,7 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
                 <div className="form-group"><label>Head Email</label><input className="form-control" type="email" value={headSetup.email} onChange={(e) => setHeadSetup((c) => ({ ...c, email: e.target.value }))} required /></div>
                 <div className="form-group"><label>Password</label><input className="form-control" type="password" value={headSetup.password} onChange={(e) => setHeadSetup((c) => ({ ...c, password: e.target.value }))} required /></div>
                 <div className="form-group"><label>Setup Code</label><input className="form-control" type="text" value={headSetup.setupCode} onChange={(e) => setHeadSetup((c) => ({ ...c, setupCode: e.target.value }))} placeholder="DarulHudaHead2026" required /></div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                <div className="login-actions" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
                   <button type="button" className="btn btn-outline" onClick={() => setShowHeadSetup(false)}>Cancel</button>
                 </div>
                 <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '0.95rem' }} disabled={loading}>{loading ? 'Creating head account...' : 'Create Head Account'}</button>
@@ -186,7 +186,7 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
           <form onSubmit={handleTeacherLogin} autoComplete="off">
             <div className="form-group"><label>Teacher Email</label><input className="form-control" type="email" name="teacher-email" autoComplete="off" placeholder="e.g. teacher@darulhuda.local" value={teacherLogin.email} onChange={(e) => setTeacherLogin((c) => ({ ...c, email: e.target.value }))} required /></div>
             <div className="form-group"><label>Password</label><input className="form-control" type="password" name="teacher-password" autoComplete="new-password" placeholder="Enter your password" value={teacherLogin.password} onChange={(e) => setTeacherLogin((c) => ({ ...c, password: e.target.value }))} required /></div>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+            <div className="login-actions" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
               <button type="button" className="btn btn-outline" onClick={() => switchMode(MODES.FORGOT)}>Forgot password?</button>
             </div>
             <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '0.95rem' }} disabled={loading}>{loading ? 'Signing in...' : 'Sign In as Teacher'}</button>
@@ -196,7 +196,7 @@ export default function Login({ onLoginSuccess, initialMode = MODES.HEAD_LOGIN, 
         {mode === MODES.FORGOT && (
           <form onSubmit={handleForgotPassword}>
             <div className="form-group"><label>Account Email</label><input className="form-control" type="email" value={forgotPassword.email} onChange={(e) => setForgotPassword((c) => ({ ...c, email: e.target.value }))} required /></div>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+            <div className="login-actions" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
               <button type="button" className="btn btn-outline" onClick={() => switchMode(MODES.HEAD_LOGIN)}>Back to login</button>
             </div>
             <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '0.95rem' }} disabled={loading}>{loading ? 'Generating reset token...' : 'Generate Reset Token'}</button>

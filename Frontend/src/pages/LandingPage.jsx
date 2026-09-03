@@ -168,7 +168,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
 
   if (loading) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', flexDirection: 'column', gap: '1rem' }}>
+      <div className="loading-state" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', flexDirection: 'column', gap: '1rem' }}>
         <div style={{ border: '4px solid rgba(15, 76, 58, 0.1)', borderTop: '4px solid var(--color-primary)', borderRadius: '50%', width: '40px', height: '40px', animation: 'pulseBorder 1s linear infinite' }} />
         <p style={{ color: 'var(--color-primary)', fontFamily: 'var(--font-heading)', fontWeight: 600 }}>Loading Madarsa Portal...</p>
       </div>
@@ -177,8 +177,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
 
   const name = siteContent?.madarsa_name || 'Madarsa Islamia Darul Huda';
   const logo = siteContent?.logo_text || 'م';
-  const arabicBrandName = 'مدرسة دار الهدى الإسلامية';
-  const arabicMadarsaName = 'مدرسة إسلامية دار الهدى شهيد مخدوم بلاول';
+  const arabicMadarsaName = 'مدرسہ اسلامیہ دارالہدیٰ انڈس ہائی وے مخدوم بلال ضلع دادو سندھ';
   const englishMadarsaName = 'Madarsa Islamia Darul Huda Shaheed Makhdoom Bilawal';
   const duroodText = 'اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ • اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ';
   const heroTitle = siteContent?.hero_title || 'A trusted digital home for your madarsa community';
@@ -193,6 +192,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
         <div
           role="status"
           aria-live="polite"
+          className="success-toast"
           style={{
             position: 'fixed',
             top: '1rem',
@@ -216,7 +216,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
 
       {/* Notice Banner */}
       {specialNotice && (
-        <div style={{
+        <div className="notice-banner" style={{
           background: 'var(--color-primary)',
           color: 'var(--white)',
           padding: '0.6rem 1rem',
@@ -231,7 +231,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       )}
 
       {/* Hero Section */}
-      <section id="home" style={{
+      <section id="home" className="hero-section" style={{
         position: 'relative',
         minHeight: '680px',
         color: 'var(--white)',
@@ -257,7 +257,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
           background: 'linear-gradient(90deg, rgba(5, 28, 22, 0.88) 0%, rgba(8, 41, 31, 0.66) 40%, rgba(8, 41, 31, 0.36) 100%)',
         }} />
 
-        <div className="container hero-inner" style={{
+        <div className="container hero-inner landing-hero-inner" style={{
           position: 'relative',
           zIndex: 1,
           display: 'flex',
@@ -268,7 +268,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
           paddingTop: '4rem',
           paddingBottom: '4rem'
         }}>
-          <div className="animate-fade-in" style={{
+          <div className="animate-fade-in landing-hero-copy" style={{
             maxWidth: '980px',
             width: '100%',
             margin: '0 auto',
@@ -332,7 +332,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-padding" style={{ backgroundColor: 'var(--white)' }}>
+      <section id="about" className="section-padding landing-section landing-about" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>About Us</span>
@@ -340,7 +340,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div className="landing-two-column" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="landing-two-column landing-about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
             <div>
               <p style={{ fontSize: '1.1rem', color: 'var(--color-dark-muted)', marginBottom: '1.5rem', lineHeight: 1.8 }}>
                 {aboutText}
@@ -350,7 +350,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
               </p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="about-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
               <div className="card" style={{ padding: '2rem', textAlign: 'center' }}>
                 <h3 style={{ fontSize: '2.5rem', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>{courses.length}</h3>
                 <p style={{ fontWeight: 600, color: 'var(--color-dark)' }}>Active Courses</p>
@@ -367,9 +367,9 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* Schedule / Vacation Section */}
-      <section id="schedule" style={{ backgroundColor: 'var(--color-primary-light)', padding: '5rem 0' }}>
+      <section id="schedule" className="landing-section landing-schedule" style={{ backgroundColor: 'var(--color-primary-light)', padding: '5rem 0' }}>
         <div className="container">
-          <div className="schedule-panel" style={{
+          <div className="schedule-panel landing-schedule-panel" style={{
             backgroundColor: 'var(--white)',
             borderRadius: 'var(--border-radius-lg)',
             padding: '3rem',
@@ -388,7 +388,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
               <p style={{ color: 'var(--color-dark-muted)', marginBottom: '2rem', lineHeight: 1.7 }}>
                 The weekly calendar on the right reflects your saved course timings and instructor assignments automatically.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+              <div className="schedule-badges" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', background: '#dcfce7', color: '#15803d', borderRadius: '999px', fontWeight: 600 }}>
                   Open Saturday to Wednesday
                 </div>
@@ -440,7 +440,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* Donation Section */}
-      <section id="donation" className="section-padding" style={{ backgroundColor: 'var(--white)' }}>
+      <section id="donation" className="section-padding landing-section landing-donation" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container" style={{ maxWidth: '960px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem auto' }}>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>Donate</span>
@@ -448,7 +448,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div className="landing-two-column" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
+          <div className="landing-two-column donation-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
             <div style={{ padding: '2rem', borderRadius: '20px', background: 'var(--color-primary-light)', color: 'var(--color-dark)', boxShadow: 'var(--shadow-sm)' }}>
               <h3 style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>Donation Situation</h3>
               <p style={{ color: 'var(--color-dark-muted)', lineHeight: 1.8 }}>
@@ -456,7 +456,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gap: '1rem' }}>
+            <div className="donation-stack" style={{ display: 'grid', gap: '1rem' }}>
               {(siteContent?.donation_items && siteContent.donation_items.length > 0) ? (
                 siteContent.donation_items.map((item, i) => (
                   <div key={i} style={{ padding: '1.8rem', borderRadius: '20px', background: 'var(--gray-50)', border: '1px solid var(--gray-200)' }}>
@@ -490,7 +490,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* Courses Section */}
-      <section id="courses" className="section-padding" style={{ backgroundColor: 'var(--gray-50)' }}>
+      <section id="courses" className="section-padding landing-section landing-courses" style={{ backgroundColor: 'var(--gray-50)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>Curriculum</span>
@@ -498,14 +498,14 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div style={{
+          <div className="course-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
             gap: '2rem'
           }}>
             {courses.map((course) => (
-              <div key={course.id} className="card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1rem' }}>
+              <div key={course.id} className="card course-card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <div className="course-header" style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1rem' }}>
                   {course.teacher_profile_image ? (
                     <img src={course.teacher_profile_image} alt={course.teacher_name || 'Instructor'} style={{ width: '58px', height: '58px', borderRadius: '50%', objectFit: 'cover', border: '3px solid var(--color-accent)' }} />
                   ) : (
@@ -533,7 +533,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
                 <p style={{ color: 'var(--color-dark-muted)', fontSize: '0.95rem', marginBottom: '1.5rem', flexGrow: 1 }}>
                   {course.description}
                 </p>
-                <div style={{
+                <div className="course-details-grid" style={{
                   borderTop: '1px solid var(--gray-200)',
                   paddingTop: '1rem',
                   marginTop: 'auto',
@@ -565,8 +565,8 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* Admission Section */}
-      <section id="admission" className="section-padding" style={{ backgroundColor: 'var(--white)' }}>
-        <div className="container landing-two-column admission-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '5rem', alignItems: 'flex-start' }}>
+      <section id="admission" className="section-padding landing-section landing-admission" style={{ backgroundColor: 'var(--white)' }}>
+        <div className="container landing-two-column admission-layout admission-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '5rem', alignItems: 'flex-start' }}>
           <div>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>Admissions</span>
             <h2 style={{ fontSize: '2.25rem', marginTop: '0.5rem', marginBottom: '1.5rem' }}>Submit Student Registration</h2>
@@ -600,7 +600,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             )}
 
             <form onSubmit={handleAdmissionSubmit}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="form-grid admission-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div className="form-group">
                   <label>Student Full Name *</label>
                   <input
@@ -625,7 +625,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '1rem' }}>
+              <div className="form-grid admission-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '1rem' }}>
                 <div className="form-group">
                   <label>Age</label>
                   <input
@@ -691,7 +691,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* Search Section */}
-      <section id="search" className="section-padding" style={{ backgroundColor: 'var(--gray-50)' }}>
+      <section id="search" className="section-padding landing-section landing-search" style={{ backgroundColor: 'var(--gray-50)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>Search Portal</span>
@@ -699,7 +699,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div className="card" style={{ maxWidth: '850px', margin: '0 auto 3rem auto' }}>
+          <div className="card search-card" style={{ maxWidth: '850px', margin: '0 auto 3rem auto' }}>
             <form className="search-form" onSubmit={handleSearchSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr auto', gap: '1rem', alignItems: 'flex-end' }}>
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label>Roll Number</label>
@@ -781,7 +781,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* Special Events Section */}
-      <section id="events" className="section-padding" style={{ backgroundColor: 'var(--white)' }}>
+      <section id="events" className="section-padding landing-section landing-events" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>Notice Board</span>
@@ -789,7 +789,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div style={{
+          <div className="events-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
             gap: '2.5rem'
@@ -821,7 +821,7 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section-padding" style={{ backgroundColor: 'var(--gray-50)', borderBottom: '1px solid var(--gray-200)' }}>
+      <section id="contact" className="section-padding landing-section landing-contact" style={{ backgroundColor: 'var(--gray-50)', borderBottom: '1px solid var(--gray-200)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.85rem' }}>Contact Info</span>
@@ -829,39 +829,99 @@ export default function LandingPage({ setPage, refreshKey = 0 }) {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '5rem', alignItems: 'center' }}>
+          <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '5rem', alignItems: 'center' }}>
             <div>
               <h3 style={{ marginBottom: '1.5rem', color: 'var(--color-primary)' }}>Contact Address & Support</h3>
               <p style={{ color: 'var(--color-dark-muted)', marginBottom: '2.5rem' }}>
                 Feel free to visit us or reach out via phone/email for any questions concerning enrollment, teaching, or event sponsorship.
               </p>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+              <div className="contact-details" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div className="contact-detail-item" style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                   <div style={{ color: 'var(--color-primary)', fontSize: '1.2rem', marginTop: '0.2rem' }}>📍</div>
                   <div>
                     <strong>Location Address:</strong>
                     <div style={{ color: 'var(--color-dark-muted)', marginTop: '0.25rem' }}>{siteContent?.contact_address || 'Main Road, Community Campus, Pakistan'}</div>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                <div className="contact-detail-item" style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                   <div style={{ color: 'var(--color-primary)', fontSize: '1.2rem', marginTop: '0.2rem' }}>✉</div>
                   <div>
                     <strong>Email Address:</strong>
-                    <div style={{ color: 'var(--color-dark-muted)', marginTop: '0.25rem' }}>{siteContent?.contact_email || 'info@darulhuda.local'}</div>
+                    <div style={{ color: 'var(--color-dark-muted)', marginTop: '0.25rem' }}>
+                      <a href={`mailto:${siteContent?.contact_email || 'brahmanishahbaz110@gmail.com'}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+                        {siteContent?.contact_email || 'brahmanishahbaz110@gmail.com'}
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                <div className="contact-detail-item" style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                   <div style={{ color: 'var(--color-primary)', fontSize: '1.2rem', marginTop: '0.2rem' }}>📞</div>
                   <div>
                     <strong>Phone Contact:</strong>
-                    <div style={{ color: 'var(--color-dark-muted)', marginTop: '0.25rem' }}>{siteContent?.contact_phone || '+92 300 1234567'}</div>
+                    <div style={{ color: 'var(--color-dark-muted)', marginTop: '0.25rem' }}>
+                      <a href={`tel:${siteContent?.contact_phone || '03243918792'}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+                        {siteContent?.contact_phone || '03243918792'}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* Direct Contact Buttons */}
+              <div className="contact-actions" style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+                <a
+                  href={`https://wa.me/${(siteContent?.contact_phone || '03243918792').replace(/^0/, '92').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Assalamu Alaikum, I want to inquire about Madarsa Islamia Darul Huda.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                    padding: '0.75rem 1.5rem', borderRadius: '8px',
+                    backgroundColor: '#25D366', color: '#fff',
+                    fontWeight: 600, fontSize: '0.95rem',
+                    textDecoration: 'none', transition: 'opacity 0.2s',
+                    boxShadow: '0 2px 8px rgba(37,211,102,0.3)',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '0.85'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  WhatsApp
+                </a>
+                <a
+                  href={`tel:${siteContent?.contact_phone || '03243918792'}`}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                    padding: '0.75rem 1.5rem', borderRadius: '8px',
+                    backgroundColor: 'var(--color-primary)', color: '#fff',
+                    fontWeight: 600, fontSize: '0.95rem',
+                    textDecoration: 'none', transition: 'opacity 0.2s',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '0.85'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                >
+                  📞 Call Now
+                </a>
+                <a
+                  href={`mailto:${siteContent?.contact_email || 'brahmanishahbaz110@gmail.com'}`}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                    padding: '0.75rem 1.5rem', borderRadius: '8px',
+                    backgroundColor: '#EA4335', color: '#fff',
+                    fontWeight: 600, fontSize: '0.95rem',
+                    textDecoration: 'none', transition: 'opacity 0.2s',
+                    boxShadow: '0 2px 8px rgba(234,67,53,0.3)',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '0.85'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                >
+                  ✉ Email
+                </a>
+              </div>
             </div>
 
-            <form className="card" style={{ padding: '2.5rem' }} onSubmit={handleContactSubmit}>
+            <form className="card contact-form" style={{ padding: '2.5rem' }} onSubmit={handleContactSubmit}>
               <h3 style={{ marginBottom: '1.5rem', color: 'var(--color-primary)' }}>Send Quick Message</h3>
               {contactSuccess && <div style={{ padding: '0.75rem', marginBottom: '1rem', background: '#dcfce7', color: '#166534', borderRadius: '8px' }}>{contactSuccess}</div>}
               {contactError && <div style={{ padding: '0.75rem', marginBottom: '1rem', background: '#fee2e2', color: '#b91c1c', borderRadius: '8px' }}>{contactError}</div>}

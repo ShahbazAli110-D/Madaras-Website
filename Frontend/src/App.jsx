@@ -50,7 +50,7 @@ export default function App() {
   const [loginMode, setLoginMode] = useState(getInitialLoginMode);
   const [resetToken, setResetToken] = useState(getInitialSearchToken);
   const [user, setUser] = useState(null);
-  const [siteName, setSiteName] = useState('مدرسة دار الهدى الإسلامية');
+  const [siteName, setSiteName] = useState('مدرسہ اسلامیہ دارالہدیٰ');
   const [siteLogo, setSiteLogo] = useState('م');
   const [footerText, setFooterText] = useState('Madarsa Islamia Darul Huda. Serving students with sincerity and structure.');
   const [contentVersion, setContentVersion] = useState(0);
@@ -95,7 +95,7 @@ export default function App() {
       const data = await api.get('/public/bootstrap');
       const siteContent = getBootstrapSiteContent(data);
       if (siteContent) {
-        setSiteName(siteContent.madarsa_name || 'مدرسة دار الهدى الإسلامية');
+        setSiteName(siteContent.madarsa_name || 'مدرسہ اسلامیہ دارالہدیٰ');
         setSiteLogo(siteContent.logo_text || 'م');
         setFooterText(siteContent.footer_text || 'Madarsa Islamia Darul Huda. Serving students with sincerity and structure.');
       }
@@ -122,9 +122,9 @@ export default function App() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className="app-shell" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Header/Navbar */}
-      <header className="header-glass" style={{
+      <header className="header-glass site-header" style={{
         background: 'linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(242,236,220,0.94) 100%)',
         borderBottom: '1px solid rgba(15, 76, 58, 0.08)',
         boxShadow: '0 14px 30px rgba(15, 76, 58, 0.08), inset 0 1px 0 rgba(255,255,255,0.35)'
@@ -136,7 +136,7 @@ export default function App() {
           height: '80px'
         }}>
           {/* Logo Section */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', cursor: 'pointer' }} onClick={() => setPage('landing')}>
+          <div className="site-brand" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', cursor: 'pointer' }} onClick={() => setPage('landing')}>
             <img
                           src={MADARSA_LOGO}
                           alt="Madarsa logo"
@@ -158,8 +158,8 @@ export default function App() {
                 color: '#0d473c',
                 letterSpacing: '0.02em',
                 display: 'block',
-              }}>
-                مدرسة إسلامية دار الهدى
+              }} className="site-brand-text">
+                مدرسہ اسلامیہ دارالہدیٰ
               </span>
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function App() {
       </main>
 
       {/* Footer Section */}
-      <footer style={{
+      <footer className="site-footer" style={{
         background: 'var(--color-dark)',
         color: 'rgba(255,255,255,0.7)',
         padding: '4rem 0 2rem 0',
@@ -242,7 +242,7 @@ export default function App() {
         fontSize: '0.9rem'
       }}>
         <div className="container">
-          <div style={{
+          <div className="site-footer-grid" style={{
             display: 'grid',
             gridTemplateColumns: '1.5fr 1fr',
             gap: '4rem',
@@ -287,7 +287,7 @@ export default function App() {
 
           </div>
 
-          <div style={{
+          <div className="site-footer-bottom" style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',

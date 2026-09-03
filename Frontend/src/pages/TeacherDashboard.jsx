@@ -237,8 +237,8 @@ export default function TeacherDashboard({ user, onLogout }) {
   const activeCourse = courses.find((course) => String(course.id) === String(selectedCourseId));
 
   return (
-    <div className="container section-padding" style={{ maxWidth: '1200px' }}>
-      <div className="dashboard-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--gray-200)' }}>
+    <div className="container section-padding teacher-shell" style={{ maxWidth: '1200px' }}>
+      <div className="dashboard-heading teacher-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--gray-200)' }}>
         <div>
           <p style={{ margin: 0, color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.8rem' }}>Teacher Portal</p>
           <h2 style={{ margin: '0.35rem 0 0.5rem' }}>Assalamu Alaikum, {teacher.display_name || teacher.full_name || 'Teacher'}</h2>
@@ -250,7 +250,7 @@ export default function TeacherDashboard({ user, onLogout }) {
       {error && <div style={{ padding: '0.85rem 1rem', borderRadius: '12px', background: '#fee2e2', color: '#b91c1c', border: '1px solid #fecaca', marginBottom: '1rem' }}>{error}</div>}
       {success && <div style={{ padding: '0.85rem 1rem', borderRadius: '12px', background: '#dcfce7', color: '#166534', border: '1px solid #bbf7d0', marginBottom: '1rem' }}>{success}</div>}
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.5rem' }}>
+      <div className="teacher-tabs" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.5rem' }}>
         {['overview', 'students', 'attendance', 'profile'].map((tab) => (
           <button key={tab} type="button" className="btn" onClick={() => setActiveTab(tab)} style={{ padding: '0.7rem 1rem', borderRadius: '999px', background: activeTab === tab ? 'var(--color-primary)' : 'var(--gray-100)', color: activeTab === tab ? 'var(--white)' : 'var(--color-dark)' }}>
             {tab === 'overview' ? 'Overview' : tab === 'students' ? 'Student Records' : tab === 'attendance' ? 'Attendance' : 'My Profile'}
@@ -260,7 +260,7 @@ export default function TeacherDashboard({ user, onLogout }) {
 
       {activeTab === 'overview' && (
         <div style={{ display: 'grid', gap: '1.25rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+          <div className="teacher-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
             <div className="card"><h3 style={{ marginTop: 0, color: 'var(--color-primary)' }}>{courses.length}</h3><p style={{ marginBottom: 0, color: 'var(--color-dark-muted)' }}>Assigned Courses</p></div>
             <div className="card"><h3 style={{ marginTop: 0, color: 'var(--color-primary)' }}>{overview?.students_count || 0}</h3><p style={{ marginBottom: 0, color: 'var(--color-dark-muted)' }}>Visible Students</p></div>
             <div className="card"><h3 style={{ marginTop: 0, color: 'var(--color-primary)' }}>{teacher.qualification || 'Teacher'}</h3><p style={{ marginBottom: 0, color: 'var(--color-dark-muted)' }}>Role / Qualification</p></div>
@@ -268,7 +268,7 @@ export default function TeacherDashboard({ user, onLogout }) {
 
           <div className="card">
             <h3 style={{ marginTop: 0 }}>Assigned Courses</h3>
-            <div style={{ display: 'grid', gap: '0.9rem', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+            <div className="teacher-courses-grid" style={{ display: 'grid', gap: '0.9rem', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
               {courses.map((course) => (
                 <div key={course.id} style={{ border: '1px solid var(--gray-200)', borderRadius: '14px', padding: '1rem' }}>
                   <strong style={{ color: 'var(--color-primary)' }}>{course.title}</strong>
@@ -285,7 +285,7 @@ export default function TeacherDashboard({ user, onLogout }) {
 
       {activeTab === 'profile' && (
         <form className="card" onSubmit={saveProfile} style={{ maxWidth: '720px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+          <div className="teacher-profile-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
             {teacher.profile_image ? <img src={teacher.profile_image} alt={teacher.full_name} style={{ width: '84px', height: '84px', borderRadius: '50%', objectFit: 'cover' }} /> : <div style={{ width: '84px', height: '84px', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--color-primary-light)', color: 'var(--color-primary)', fontSize: '2rem', fontWeight: 700 }}>{(teacher.full_name || 'T').charAt(0)}</div>}
             <div className="form-group" style={{ margin: 0 }}>
               <label>Profile Picture</label>
@@ -356,7 +356,7 @@ export default function TeacherDashboard({ user, onLogout }) {
                   <div className="form-group"><label>Phone</label><input className="form-control" value={editingStudent.phone || ''} onChange={(e) => setEditingStudent((c) => ({ ...c, phone: e.target.value }))} /></div>
                 </div>
                 <div className="form-group"><label>Address</label><textarea className="form-control" rows="3" value={editingStudent.address || ''} onChange={(e) => setEditingStudent((c) => ({ ...c, address: e.target.value }))} /></div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <div className="teacher-actions" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                   <button type="submit" className="btn btn-primary" disabled={savingStudent}>{savingStudent ? 'Saving...' : 'Save Student'}</button>
                   <button type="button" className="btn btn-outline" onClick={() => setEditingStudent(null)}>Cancel</button>
                   <div style={{ alignSelf: 'center', color: 'var(--color-dark-muted)' }}>Course and admission status are controlled by the head.</div>
@@ -386,7 +386,7 @@ export default function TeacherDashboard({ user, onLogout }) {
             <div className="card">
               <h3 style={{ marginTop: 0 }}>Saved Attendance Files</h3>
               <p style={{ margin: 0, color: 'var(--color-dark-muted)' }}>Select a saved attendance date below to open that record.</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
+              <div className="teacher-attendance-dates" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
                 {historyLoading ? (
                   <span style={{ color: 'var(--color-dark-muted)' }}>Loading saved dates...</span>
                 ) : attendanceDates.length === 0 ? (
@@ -435,7 +435,7 @@ export default function TeacherDashboard({ user, onLogout }) {
                           <td><strong>{student.roll_no}</strong></td>
                           <td>{student.full_name}</td>
                           <td>
-                            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                            <div className="teacher-attendance-status" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                               {['present', 'absent', 'leave'].map((status) => (
                                 <label key={status} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
                                   <input type="radio" name={`attendance-${student.student_id}`} checked={entry.status === status} onChange={() => updateEntry(student.student_id, 'status', status)} />

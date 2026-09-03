@@ -398,7 +398,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
   }
 
   return (
-    <div className="admin-layout" style={{ display: 'grid', gridTemplateColumns: '240px 1fr', minHeight: '85vh', backgroundColor: 'var(--white)' }}>
+    <div className="admin-layout dashboard-shell" style={{ display: 'grid', gridTemplateColumns: '240px 1fr', minHeight: '85vh', backgroundColor: 'var(--white)' }}>
       {actionSuccess && (
         <div
           role="status"
@@ -511,7 +511,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
           <div>
             <h2 style={{ marginBottom: '2rem', color: 'var(--color-primary)' }}>Metrics Summary Overview</h2>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>
+            <div className="admin-metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>
               <div className="card" style={{ padding: '1.5rem', textAlign: 'center' }}>
                 <h3 style={{ fontSize: '2rem', color: 'var(--color-primary)' }}>{students.length}</h3>
                 <p style={{ color: 'var(--color-dark-muted)', fontSize: '0.9rem', marginTop: '0.25rem' }}>Total Students Enrolled</p>
@@ -530,7 +530,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
+            <div className="admin-mini-metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
               <div className="card" style={{ padding: '1.25rem', textAlign: 'center' }}>
                 <h4 style={{ margin: '0 0 0.5rem', color: 'var(--color-primary)' }}>{activeStudentCount}</h4>
                 <p style={{ margin: 0, color: 'var(--color-dark-muted)' }}>Active Students</p>
@@ -592,7 +592,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
         {/* Tab 2: Students CRUD */}
         {activeTab === 'students' && (
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div className="admin-section-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
               <h2 style={{ color: 'var(--color-primary)' }}>Student Registry Database</h2>
               <button
                 className="btn btn-primary"
@@ -737,7 +737,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
         {/* Tab 3: Teachers CRUD */}
         {activeTab === 'teachers' && (
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div className="admin-section-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
               <h2 style={{ color: 'var(--color-primary)' }}>Teacher Faculty Directory</h2>
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                 <button
@@ -859,7 +859,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
         {/* Tab 4: Courses CRUD */}
         {activeTab === 'courses' && (
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div className="admin-section-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
               <h2 style={{ color: 'var(--color-primary)' }}>Active Courses Catalog</h2>
               <button
                 className="btn btn-primary"
@@ -1014,7 +1014,7 @@ export default function AdminDashboard({ user, onLogout, onAdminProfileUpdated }
         {/* Tab 5: Events CRUD */}
         {activeTab === 'events' && (
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div className="admin-section-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
               <h2 style={{ color: 'var(--color-primary)' }}>Announcements & Special Events Notice Board</h2>
               <button
                 className="btn btn-primary"
